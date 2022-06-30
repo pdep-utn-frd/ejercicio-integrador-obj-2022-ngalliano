@@ -1,9 +1,9 @@
-
+import minions.*
 
 describe "Test Minions"{
 
-	var arma1 = new Arma(nombre = "Pistola", poder = 5)
-	var arma2 = new Arma(nombre = "Bazooka", poder = 10)
+	var arma1 = new Arma(nombre = "Pistola", potencia = 5)
+	var arma2 = new Arma(nombre = "Bazooka", potencia = 10)
 	var steve = new Minion(bananas = 0)
 	var jon = new Minion(bananas = 10)
 	
@@ -16,7 +16,7 @@ describe "Test Minions"{
 	}
 	test "steve tiene una bazooka"{
 		steve.otorgarArma(arma2)
-		assert.that(steve.tieneArma("Bazooka"))
+		assert.that(steve.armas().contains(arma2))
 	}
 	test "se le agrega 5 armas a steve, que ya tenia 1 arma"{
 		self.agregarArmas()
@@ -32,15 +32,15 @@ describe "Test Minions"{
 		assert.that(steve.esPeligroso())
 	}
 	test "Steve es de color amarillo"{
-		//assert
+		assert.that(steve.color() == amarillo)
 	}
 	test "steve toma el suero y cambia su color"{
 		steve.consumirSueroMutante()
-		//assert
+		assert.that(steve.color() == violeta)
 	}
 	test "Steve toma 2 veces el suero y es amarillo"{
 		2.times({a=>steve.consumirSueroMutante()})
-		//assert
+		assert.that(steve.color() == amarillo)
 	}
 	test "Jon toma el suero y se queda sin armas"{
 		jon.consumirSueroMutante()
@@ -65,7 +65,7 @@ describe "Test Minions"{
 	}
 	test "jon tiene una pistola en su armamento"{
 		jon.otorgarArma(arma1)
-		assert.that(jon.tieneArma("Pistola"))
+		assert.that(jon.armas().contains(arma1))
 	}
 }
 
